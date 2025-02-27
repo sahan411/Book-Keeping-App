@@ -1,0 +1,20 @@
+# Stage 1: Build the React app
+FROM node:20-alpine
+
+# Set the working directory
+WORKDIR /app
+
+# Copy package files and install dependencies
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy the rest of the application code
+COPY . .
+
+# Expose port 80 to serve the app
+EXPOSE 5000
+
+# Start Nginx in the foreground
+CMD ["npm" , "start"]
